@@ -31,7 +31,7 @@ void input() {
 	}
 	fclose(stdin);
 }
-void row_dfs(int p, int k, int r) { // to be optimized
+void row_dfs(int p, int k, int r) {
 	if (k > row[r].size()) {
 		for (int i = p + 1; i <= n; ++i)
 			if (a[r][i] == 1) return;
@@ -58,7 +58,7 @@ void row_dfs(int p, int k, int r) { // to be optimized
 		row_dfs(i + row[r][k - 1], k + 1, r);
 	}
 }
-void col_dfs(int p, int k, int c) { // to be optimized
+void col_dfs(int p, int k, int c) {
 	if (k > col[c].size()) {
 		for (int i = p + 1; i <= n; ++i)
 			if (a[i][c] == 1) return;
@@ -148,7 +148,7 @@ void clean(int tm) {
 		a[nx][ny] = -1;
 	}
 }
-bool solve(int tm) { // to be optimized
+bool solve(int tm) {
 	if (!cnt) return true;
 	pii bp = analyze();
 	int bx = bp.first, by = bp.second;
@@ -178,7 +178,7 @@ int main() {
 	auto st = clock();
 	calc(0); solve(1);
 	auto et = clock();
-	printf("T + %lfs", (et - st) * 1.0 / CLOCKS_PER_SEC);
+	printf("T + %lfs\t", (et - st) * 1.0 / CLOCKS_PER_SEC);
 	output();
 	return 0;
 }

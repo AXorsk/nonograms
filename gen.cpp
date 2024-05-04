@@ -31,7 +31,7 @@ int main() {
 			if (a[i][j]) ++tot;
 			else if (tot) { printf("%d ", tot); tot = 0; }
 		}
-		puts("0"); // end with 0 as a sign
+		puts("0");
 	}
 	fclose(stdout);
 	return 0;

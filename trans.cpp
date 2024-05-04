@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    freopen("code_804170.txt", "r", stdin);
+    freopen("code.txt", "r", stdin);
     string s; cin >> s;
     int n, t = 0;
     fclose(stdin);
