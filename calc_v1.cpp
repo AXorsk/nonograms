@@ -6,7 +6,6 @@ int a[MAXN][MAXN], w[MAXN][MAXN];
 int pos[MAXN], d[MAXN], wt[MAXN];
 bool t[MAXN], flag, wrg;
 int n, cnt;
-queue <int> q;
 stack <pii> stk[MAXN];
 vector <int> row[MAXN], col[MAXN];
 void input() {
@@ -85,10 +84,16 @@ void col_dfs(int p, int k, int c) {
 		col_dfs(i + col[c][k - 1], k + 1, c);
 	}
 }
-bool calc(int tm) {
-	for (int i = 1; i <= n; ++i) {
-		q.emplace(i);  // +: row
-		q.emplace(-i); // -: col
+bool calc(int tm, pii bp = {0, 0}) {
+	queue <int> q; // +: row; -: col
+	if (tm) {
+		q.emplace(bp.first);
+		q.emplace(-bp.second);
+	} else {
+		for (int i = 1; i <= n; ++i) {
+			q.emplace(i);
+			q.emplace(-i);
+		}
 	}
 	while (!q.empty()) {
 		int u = q.front(); q.pop();
@@ -130,6 +135,7 @@ pii analyze() {
 		for (int i = 1; i <= n; ++i)
 			w[i][j] += wt[i];
 	}
+	// search 1 or 0 ?
 	int mx = INT_MIN; pii ret;
 	for (int i = 1; i <= n; ++i)
 		for (int j = 1; j <= n; ++j)
@@ -154,12 +160,12 @@ bool solve(int tm) {
 	int bx = bp.first, by = bp.second;
 	a[bx][by] = 1; --cnt;
 	stk[tm].push({bx, by});
-	bool pd = calc(tm) && solve(tm + 1);
+	bool pd = calc(tm, bp) && solve(tm + 1);
 	if (!pd) {
 		clean(tm);
 		a[bx][by] = 0; --cnt;
 		stk[tm].push({bx, by});
-		pd = calc(tm) && solve(tm + 1);
+		pd = calc(tm, bp) && solve(tm + 1);
 	}
 	if (!pd) return clean(tm), false;
 	else return true;

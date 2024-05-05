@@ -6,7 +6,6 @@ int a[MAXN][MAXN], w[MAXN][MAXN];
 int pos[MAXN], d[MAXN], wt[MAXN];
 bool t[MAXN], flag, wrg;
 int n, cnt;
-queue <int> q;
 stack <pii> stk[MAXN];
 vector <int> row[MAXN], col[MAXN];
 pair <int, int> lnk[MAXN];
@@ -120,10 +119,17 @@ void col_dfs(int p, int k, int c) {
 		if (a[i][c] == 1) return;
 	}
 }
-bool calc(int tm) {
-	for (int i = 1; i <= n; ++i) {
-		q.emplace(i);  // +: row
-		q.emplace(-i); // -: col
+bool calc(int tm, pii bp = {0, 0}) {
+	queue <int> q; // +: row; -: col
+	while (!q.empty()) q.pop();
+	if (tm) {
+		q.emplace(bp.first);
+		q.emplace(-bp.second);
+	} else {
+		for (int i = 1; i <= n; ++i) {
+			q.emplace(i);
+			q.emplace(-i);
+		}
 	}
 	while (!q.empty()) {
 		int u = q.front(); q.pop();
@@ -194,12 +200,12 @@ bool solve(int tm) {
 	int bx = bp.first, by = bp.second;
 	a[bx][by] = 1; --cnt;
 	stk[tm].push({bx, by});
-	bool pd = calc(tm) && solve(tm + 1);
+	bool pd = calc(tm, bp) && solve(tm + 1);
 	if (!pd) {
 		clean(tm);
 		a[bx][by] = 0; --cnt;
 		stk[tm].push({bx, by});
-		pd = calc(tm) && solve(tm + 1);
+		pd = calc(tm, bp) && solve(tm + 1);
 	}
 	if (!pd) return clean(tm), false;
 	else return true;
