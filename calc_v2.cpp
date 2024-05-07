@@ -13,10 +13,10 @@ pair <int, int> lnk[MAXN];
 // second: current tail of the black block
 void input() {
 	memset(a, -1, sizeof a);
-	freopen("num.txt", "r", stdin);
+	freopen("./data/num.txt", "r", stdin);
 	scanf("%d", &n); fclose(stdin);
 	cnt = n * n;
-	freopen("input.txt", "r", stdin);
+	freopen("./data/input.txt", "r", stdin);
 	for (int i = 1; i <= n; ++i) {
 		int x; scanf("%d", &x);
 		while (x) {
@@ -211,7 +211,7 @@ bool solve(int tm) {
 	else return true;
 }
 void output() {
-	freopen("output.txt", "w", stdout);
+	freopen("./data/output.txt", "w", stdout);
 	for (int i = 1; i <= n; ++i) {
 		for (int j = 1; j <= n; ++j)
 			printf("%d ", a[i][j]);

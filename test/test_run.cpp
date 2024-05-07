@@ -5,7 +5,7 @@ int main() {
 	freopen("tasks.txt", "r", stdin);
 	string S;
 	while (cin >> S) {
-		string T = "cat " + S + " > ../code.txt";
+		string T = "cat " + S + " > ../data/code.txt";
 		system(T.c_str());
 		system("./run_test.sh");
 		T = "echo " + S;

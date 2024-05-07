@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-	freopen("num.txt", "r", stdin);
+	freopen("./data/num.txt", "r", stdin);
 	int n; scanf("%d", &n);
     fclose(stdin);
-	freopen("input.txt", "r", stdin);
-    freopen("code.txt", "w", stdout);
+	freopen("./data/input.txt", "r", stdin);
+    freopen("./data/code.txt", "w", stdout);
 	for (int i = 1; i <= n; ++i) {
 		int x; scanf("%d", &x);
 		while (x) {

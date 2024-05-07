@@ -6,17 +6,17 @@ mt19937 rnd(time(NULL));
 uniform_int_distribution <int> u(0, 1);
 int main() {
 	int n = 25;
-	freopen("num.txt", "w", stdout);
+	freopen("./data/num.txt", "w", stdout);
 	printf("%d\n", n);
 	fclose(stdout);
-	freopen("origin.txt", "w", stdout);
+	freopen("./data/origin.txt", "w", stdout);
 	for (int i = 1; i <= n; ++i) {
 		for (int j = 1; j <= n; ++j)
 			printf("%d ", a[i][j] = u(rnd));
 		putchar('\n');
 	}
 	fclose(stdout);
-	freopen("input.txt", "w", stdout);
+	freopen("./data/input.txt", "w", stdout);
 	for (int j = 1; j <= n; ++j) {
 		int tot = 0;
 		for (int i = 1; i <= n + 1; ++i) {

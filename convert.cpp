@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    freopen("code.txt", "r", stdin);
+    freopen("./data/code.txt", "r", stdin);
     string s; cin >> s;
     int n, t = 0;
     fclose(stdin);
-    freopen("input.txt", "w", stdout);
+    freopen("./data/input.txt", "w", stdout);
     for (int i = 0; i < s.size(); ++i) {
         if (s[i] == '_') {
             if (s[i + 1] == '_') {
@@ -18,7 +18,7 @@ int main() {
     }
     puts(" 0");
     fclose(stdout);
-    freopen("num.txt", "w", stdout);
+    freopen("./data/num.txt", "w", stdout);
     printf("%d\n", n);
     fclose(stdout);
     return 0;
