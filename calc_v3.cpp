@@ -4,11 +4,9 @@ using pii = pair <int, int>;
 const int MAXN = 1e3 + 6;
 const double DDL = 0.1; // dividing line of chosing 0 or 1
 struct tPos { int x, y, c; };
-int a[MAXN][MAXN]; double w[MAXN][MAXN];
-int pos[MAXN], d[MAXN], wt[MAXN], nt;
-bool t[MAXN], flag, wrg;
-int n, cnt;
-int T, W;
+int n, cnt, nt; int T, W;
+double w[MAXN][MAXN]; bool t[MAXN], flag, wrg;
+int a[MAXN][MAXN], pos[MAXN], d[MAXN], wt[MAXN];
 stack <pii> stk[MAXN];
 vector <int> row[MAXN], col[MAXN];
 void input() {
@@ -163,8 +161,7 @@ tPos analyze() {
 	return ret;
 }
 void clean(int tm) {
-	++W;
-	cnt += stk[tm].size();
+	cnt += stk[tm].size(); ++W;
 	while (!stk[tm].empty()) {
 		int nx = stk[tm].top().first;
 		int ny = stk[tm].top().second;
@@ -175,7 +172,6 @@ void clean(int tm) {
 bool solve(int tm) {
 	if (!cnt) return true;
 	tPos bp = analyze();
-    // cout << tm << " " << bp.x << " " << bp.y << endl;
 	a[bp.x][bp.y] = bp.c; --cnt; ++T;
 	stk[tm].push({bp.x, bp.y});
 	bool pd = calc(tm, bp) && solve(tm + 1);
