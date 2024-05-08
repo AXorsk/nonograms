@@ -5,7 +5,7 @@ bool a[MAXN][MAXN];
 mt19937 rnd(time(NULL));
 uniform_int_distribution <int> u(0, 1);
 int main() {
-	int n = 25;
+	int n = 30;
 	freopen("./data/num.txt", "w", stdout);
 	printf("%d\n", n);
 	fclose(stdout);

@@ -1,3 +1,3 @@
 #!/bin/bash
 cd ..
-./convert && ./calc_v1 && ./check
+./convert && ./calc_v3 && ./check
