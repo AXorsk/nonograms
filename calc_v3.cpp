@@ -144,20 +144,6 @@ tPos analyze() {
 				mx = abs(w[i][j] - DDL);
 				ret = {i, j, w[i][j] >= DDL};
 			}
-	// for (int i = 1; i <= n; ++i) {
-	// 	for (int j = 1; j <= n; ++j) {
-	// 		if (!~a[i][j]) printf("x ");
-	// 		else printf("%d ", a[i][j]);
-	// 	}
-	// 	putchar('\n');
-	// }
-	// for (int i = 1; i <= n; ++i) {
-	// 	for (int j = 1; j <= n; ++j)
-	// 		printf("%.3lf ", w[i][j]);
-	// 	putchar('\n');
-	// }
-	// printf("%d %d %d\n", ret.x, ret.y, ret.c);
-	// putchar('\n');
 	return ret;
 }
 void clean(int tm) {
@@ -195,13 +181,11 @@ void output() {
 }
 int main() {
 	input();
-	// freopen("./data/proc.log", "w", stdout);
 	auto st = clock();
 	calc(0); solve(1);
 	auto et = clock();
 	printf("T + %lfs\t", (et - st) * 1.0 / CLOCKS_PER_SEC);
 	if (T) printf("%d / %d\t", T - W, T);
-	// fclose(stdout);
 	output();
 	return 0;
 }
